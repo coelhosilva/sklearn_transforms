@@ -26,5 +26,5 @@ class ClipColumns(BaseEstimator, TransformerMixin):
     
     def transform(self, X):
         data = X.copy()
-        data[self.columns] = df_data_1[self.columns].clip(self.lower_limit,self.upper_limit)
+        data[self.columns] = data[self.columns].clip(self.lower_limit,self.upper_limit)
         return data
