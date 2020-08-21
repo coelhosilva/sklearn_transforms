@@ -14,3 +14,17 @@ class DropColumns(BaseEstimator, TransformerMixin):
         data = X.copy()
         # Retornamos um novo dataframe sem as colunas indesejadas
         return data.drop(labels=self.columns, axis='columns')
+
+class ClipColumns(BaseEstimator, TransformerMixin):
+    def __init__(self, columns, lower_imit, upper_limit):
+        self.columns = columns
+        self.lower_limit = lower_imit
+        self.upper_limit = upper_limit
+
+    def fit(self, X, y=None):
+        return self
+    
+    def transform(self, X):
+        data = X.copy()
+        data[self.columns] = df_data_1[self.columns].clip(self.lower_limit,self.upper_limit)
+        return data
